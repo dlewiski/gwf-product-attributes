@@ -1,30 +1,29 @@
-## GoodwillFinds product attributes scripts
+## How to Use the GoodwillFinds Product Description Scripts
 
-This repository contains 3 JavaScript files that extract descriptions from HTML
-tags and generates and plain JavaScript object with organized tags and their
-descriptions.
+Welcome! This folder has 3 JavaScript (JS) files. These files help us collect
+details about different products from their HTML descriptions and organize them
+in a simpler way.
 
-### Current state of product attributes
+### What is this about?
 
-The original description data lives in the Salesforce Business Manager under
-“Details” (after being entered into and fed from the listing service). See
-example below:
+Every product has details listed in the Salesforce Business Manager, like its
+condition, size, color, etc. These details are put in something called 'HTML
+tags.' Imagine these tags as labels on different parts of the description.
 
-Assuming we can get the details as a string of text, we can say the initial
-product attributes data will look something like this:
+Here's an example of how these product details look in HTML tags:
 
-```
+```JavaScript
 const htmlStr =
   "<dl> <dt>Condition</dt><dd>Used, Good</dd> <dt>Height</dt><dd>0.00</dd> <dt>Width</dt><dd>0.00</dd> <dt>Length</dt><dd>0.00</dd> <dt>Size</dt><dd>XL</dd> <dt>Color</dt><dd>Blue</dd> <dd>Red</dd><dt>Closure</dt><dd>Pullover</dd> <dt>Season</dt><dd>All Seasons</dd> <dt>Size Type</dt><dd>Regular</dd> <dt>Department</dt><dd>Women</dd> <dt>Style</dt><dd>Cropped</dd> <dt>Neckline</dt><dd>Round Neck</dd> <dt>Sleeve Length</dt><dd>Long Sleeve</dd> <dt>Pattern</dt><dd>Striped</dd> <dt> Theme</dt> <dd>Modern</dd> <dt>Fit</dt><dd>Regular</dd> <dt>Occasion</dt><dd>Casual</dd> <dt>Features</dt><dd>Comfort</dd> <dt> Type</dt><dd>Blouse</dd> </dl>"
 ```
 
-### Parsing and organizing product attributes
+### What do these scripts do?
 
-In the `product-attributes/` folder are three JavaScript files that take a
-string similar to the example above and transform it into a JavaScript object
-like the example below:
+The three JS files in the product-attributes/ folder take these HTML tags and
+change them into a simpler object. Here's an example of what it looks like after
+the transformation:
 
-```
+```JavaScript
 const productAttributesObj = {
   condition: ["Used, Good"],
   height: ["0.00"],
@@ -48,30 +47,24 @@ const productAttributesObj = {
 };
 ```
 
-Since the original text uses HTML tags, it is most effective to utilize DOM
-methods to handle the identification and separation of content based upon the
-HTML tags themselves. However, we will likely not have access to the DOM since
-we will want to handle this data on the server. Therefore, two of the scripts
-are able to organize the data without access to the DOM. The file titled
-`productAttributes.js` uses RegEx and the `productAttributesJSDOM.js` uses the
-JSDOM dependency to enable the use of DOM methods. Given the uncertainty of the
-environment where this logic will need to run, it was pragmatic to have a script
-that was pure and requires no dependencies which is the script in
-`productAttributes.js`. These scripts assume that the original description data
-will be formatted with the `<dl>`, `<dt>`, and `<dd>` tags respectively.
+Our scripts use different ways to do this. One of them, productAttributes.js,
+uses something called RegEx. Another one, productAttributesJSDOM.js, uses a
+helper called JSDOM. All scripts assume that the product details will always be
+in `<dl>`, `<dt>`, and `<dd>` HTML tags.
 
-### Using the scripts
+### How can you use these scripts?
 
-Since these are JavaScript scripts, you will need to have Node installed on your
-system then you can run the command using
+First, you need to have Node (a programming tool) on your computer. You can then
+use the command below to run the script:
 
-`node [productAttributesFileName].js`
+```
+$ node [productAttributesFileName].js
+```
 
-Modify the `htmlstr` variable in the top of the file to test the script on
-various descriptions.
+To try the script with different product details, you can change the `htmlstr`
+variable at the start of the file.
 
-### Author and license
+### Who made this and can you use it?
 
-Written and prepared by Lewiski Consulting
-
-MIT License
+This was created by Lewiski Consulting and it's available for everyone to use
+under the MIT License.
