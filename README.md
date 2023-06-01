@@ -19,7 +19,7 @@ const htmlStr =
 
 ### What do these scripts do?
 
-The three JS files in the product-attributes/ folder take these HTML tags and
+The three JS files in the `product-attributes/` folder take these HTML tags and
 change them into a simpler object. Here's an example of what it looks like after
 the transformation:
 
