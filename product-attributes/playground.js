@@ -1,6 +1,5 @@
 // ! PLAYGROUND
 
-// * Before ChatGPT Refactor
 // const getProductAttributes = stringToProcess => {
 //   const htmlAttributesArr = stringToProcess.split("<dt>");
 
